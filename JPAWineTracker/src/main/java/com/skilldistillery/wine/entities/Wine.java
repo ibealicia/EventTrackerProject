@@ -5,24 +5,47 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Wine {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	@Column(name="winery_name")
-	private String wineryName;
 	private int year;
 	private String type;
 	private String color;
 	private int rating;
-	@Column(name="tasting_notes")
+	private double price;
+	@Column(name = "tasting_notes")
 	private String tastingNotes;
-	
-	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "winery_id")
+	private Winery winery;
+
+	public Wine() {
+	}
+
+	public Wine(int id, String name, int year, String type, String color, int rating, double price, String tastingNotes,
+			Winery winery) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.year = year;
+		this.type = type;
+		this.color = color;
+		this.rating = rating;
+		this.price = price;
+		this.tastingNotes = tastingNotes;
+		this.winery = winery;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -30,21 +53,13 @@ public class Wine {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getWineryName() {
-		return wineryName;
-	}
-
-	public void setWineryName(String wineryName) {
-		this.wineryName = wineryName;
 	}
 
 	public int getYear() {
@@ -78,6 +93,15 @@ public class Wine {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+	
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
 	public String getTastingNotes() {
 		return tastingNotes;
@@ -87,21 +111,22 @@ public class Wine {
 		this.tastingNotes = tastingNotes;
 	}
 
-	public Wine() {}
+	public Winery getWinery() {
+		return winery;
+	}
 
-	public Wine(int id) {
-		super();
-		this.id = id;
+	public void setWinery(Winery winery) {
+		this.winery = winery;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Wine [id=").append(id).append(", name=").append(name).append(", wineryName=").append(wineryName)
-				.append(", year=").append(year).append(", type=").append(type).append(", color=").append(color)
-				.append(", rating=").append(rating).append(", tastingNotes=").append(tastingNotes).append("]");
+		builder.append("Wine [id=").append(id).append(", name=").append(name).append(", year=").append(year)
+				.append(", type=").append(type).append(", color=").append(color).append(", rating=").append(rating)
+				.append(", price=").append(price).append(", tastingNotes=").append(tastingNotes).append(", winery=")
+				.append(winery).append("]");
 		return builder.toString();
 	}
-	
-	
+
 }

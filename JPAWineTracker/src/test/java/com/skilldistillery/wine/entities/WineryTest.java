@@ -2,6 +2,7 @@ package com.skilldistillery.wine.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,11 +15,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class WineTest {
+class WineryTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Wine wine;
+	private Winery winery;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,27 +34,27 @@ class WineTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		wine = em.find(Wine.class, 1);
+		winery = em.find(Winery.class, 1);
 		
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		wine = null;
+		winery = null;
 	}
 
 	@Test
-	@DisplayName("test valid Wine class")
+	@DisplayName("test valid Winery class")
 	void test1() {
-		assertNotNull(wine);
-		assertEquals("American Riesling", wine.getName());
+		assertNotNull(winery);
+		assertEquals("The Winery at Holy Cross Abbey", winery.getName());
 	}
 	
 	@Test
-	@DisplayName("testing Winery mapping")
+	@DisplayName("testing Wine mapping")
 	public void test2() {
-		assertEquals("The Winery at Holy Cross Abbey",wine.getWinery().getName());
+		assertTrue(winery.getWines().size() > 0);
 	}
 
 }
