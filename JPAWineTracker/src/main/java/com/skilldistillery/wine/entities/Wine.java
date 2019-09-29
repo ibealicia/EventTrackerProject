@@ -24,7 +24,6 @@ public class Wine {
 	private double price;
 	@Column(name = "tasting_notes")
 	private String tastingNotes;
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "winery_id")
 	private Winery winery;
