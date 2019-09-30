@@ -24,16 +24,18 @@ delete wine and winery information in order to track their wine preferences.
 
 ### Mappings
 
-| Return Type |         Route         |                   Functionality |
-| ----------- | :-------------------: | ------------------------------: |
-| List        |     GET api/wines     |          Gets list of all Wines |
-| Wine        |   GET api/wines/{id}  | Gets a single wine object by id |
-| Wine        |     POST api/wines    |       Creates a new wine object |
-| Wine        |   PUT api/wines/{id}  |           Updates a wine object |
-| List        |     GET api/wines     |       Gets list of all Wineries |
-| Winery      | GET api/wineries/{id} | Gets a single wine object by id |
-| Winery      |   POST api/wineries   |     Creates a new winery object |
-| Winery      | PUT api/wineries/{id} |         Updates a winery object |
+| Return Type |           Route          |                   Functionality |
+| ----------- | :----------------------: | ------------------------------: |
+| List        |       GET api/wines      |          Gets list of all Wines |
+| Wine        |    GET api/wines/{id}    | Gets a single wine object by id |
+| Wine        |      POST api/wines      |       Creates a new wine object |
+| Wine        |    PUT api/wines/{id}    |           Updates a wine object |
+| boolean     |   DELETE api/wines/{id}  |           Deletes a wine object |
+| List        |       GET api/wines      |       Gets list of all Wineries |
+| Winery      |   GET api/wineries/{id}  | Gets a single wine object by id |
+| Winery      |     POST api/wineries    |      Creates a new winer object |
+| Winery      |   PUT api/wineries/{id}  |           Updates a wine object |
+| boolean     | DELETE api/wineries/{id} |         Deletes a winery object |
 
 ### Lessons learned
 
