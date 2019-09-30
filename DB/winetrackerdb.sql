@@ -83,6 +83,8 @@ USE `winetrackerdb`;
 INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (1, 'American Riesling', 2018, 'Riesling', 'white', 4, '19.00', 'Fruity tartness and refreshing crisp finish ', 1);
 INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (2, 'Pomegranate Rouge', 2018, 'Zinfandel', 'red', 3, '16.00', 'This light red wine is made from Zinfandel with natural pomegranate flavors and is very refreshing, balanced with sweet and tang.', 2);
 INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (3, 'Cabernet Sauvignon', 2017, 'Cabernet Sauvignon', 'red', 5, '32.00', 'Intensely smooth with big black cherry and smoky oak on the palette.', 1);
+INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (4, 'Monterey Chardonnay', 2017, 'Chardonnay', 'white', 3, '21.00', 'Loaded with beautiful, ripe fruit flavors of pear, green apple, citrus and hints of oak. ', 1);
+INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (5, 'Conifer Red', 2018, 'Sangiovese', 'red', 4, '18.00', '100% Sangiovese features plum and nice acid balance with subtle oak flavors', 2);
 
 COMMIT;
 
