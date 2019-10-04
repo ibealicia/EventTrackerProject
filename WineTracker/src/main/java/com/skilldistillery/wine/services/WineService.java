@@ -11,5 +11,8 @@ public interface WineService {
 	Boolean deleteWine(Integer id);
 	Wine addWine(Wine wine);
 	Wine updateWine(Integer id, Wine wine);
+	List<Wine> findByPriceBetween(double low, double high);
+	List<Wine> findByWinery_NameLike(String name);
+	List<Wine> findByTypeLike(String name);
 
 }

@@ -30,7 +30,6 @@ public class WineryRepositoryTest {
 		List<Winery> wineries = repo.findAll();
 		assertNotNull(wineries);
 		assertTrue(wineries.size() > 0);
-		assertEquals(2, wineries.size());
 	}
 
 	@Test

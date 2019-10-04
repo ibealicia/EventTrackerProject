@@ -21,8 +21,7 @@ import com.skilldistillery.wine.services.WineService;
 @RequestMapping("api")
 @RestController
 public class WineController {
-	
-	
+
 	@Autowired
 	private WineService ws;
 
@@ -36,9 +35,9 @@ public class WineController {
 		List<Wine> wines = ws.findAll();
 		return wines;
 	}
+
 	@PostMapping("wines")
-	public Wine addWine(@RequestBody Wine wine, HttpServletRequest req,
-			HttpServletResponse resp) {
+	public Wine addWine(@RequestBody Wine wine, HttpServletRequest req, HttpServletResponse resp) {
 		try {
 			ws.addWine(wine);
 			resp.setStatus(201);
@@ -51,15 +50,15 @@ public class WineController {
 			e.printStackTrace();
 		}
 		return wine;
-		
+
 	}
-	
+
 	@PutMapping("wines/{id}")
 	public Wine updateWine(@PathVariable("id") Integer id, @RequestBody Wine wine, HttpServletRequest req,
 			HttpServletResponse resp) {
 
 		try {
-			wine =ws.updateWine(id, wine);
+			wine = ws.updateWine(id, wine);
 			if (wine == null) {
 				resp.setStatus(404);
 			}
@@ -71,9 +70,9 @@ public class WineController {
 		}
 		return wine;
 	}
+
 	@DeleteMapping("wines/{id}")
-	public void delete(@PathVariable("id") Integer id,
-			HttpServletResponse resp) {
+	public void delete(@PathVariable("id") Integer id, HttpServletResponse resp) {
 		try {
 			Boolean deleted = ws.deleteWine(id);
 			if (deleted) {
@@ -87,5 +86,14 @@ public class WineController {
 		}
 	}
 
+	@GetMapping("wines/name/{name}")
+	public List<Wine> findByWineryName(@PathVariable("name") String name) {
+		return ws.findByWinery_NameLike(name);
+	}
+
+	@GetMapping("wines/type/{type}")
+	public List<Wine> findByType(@PathVariable("type") String type) {
+		return ws.findByTypeLike("cabernet");
+	}
 
 }

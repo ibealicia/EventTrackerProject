@@ -24,6 +24,8 @@ delete wine and winery information in order to track their wine preferences.
 
 ### Mappings
 
+<http://18.224.122.182:8080/WineTracker/api/wines>
+
 | Return Type |           Route          |                   Functionality |
 | ----------- | :----------------------: | ------------------------------: |
 | List        |       GET api/wines      |          Gets list of all Wines |

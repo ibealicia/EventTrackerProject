@@ -1,5 +1,6 @@
 package com.skilldistillery.wine.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,8 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Wine {
@@ -24,7 +23,7 @@ public class Wine {
 	private double price;
 	@Column(name = "tasting_notes")
 	private String tastingNotes;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "winery_id")
 	private Winery winery;
 

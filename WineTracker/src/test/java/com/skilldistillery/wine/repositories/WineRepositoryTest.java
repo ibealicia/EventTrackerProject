@@ -30,11 +30,10 @@ public class WineRepositoryTest {
 		List<Wine> wines = repo.findAll();
 		assertNotNull(wines);
 		assertTrue(wines.size() > 0);
-		assertEquals(2, wines.size());
 	}
 
 	@Test
-	@DisplayName("test Post findById")
+	@DisplayName("test Wine findById")
 	public void test2() {
 		Optional<Wine> opt = repo.findById(1);
 
@@ -43,5 +42,31 @@ public class WineRepositoryTest {
 			assertEquals("American Riesling", wine.getName());
 		}
 	}
+
+	@Test
+	@DisplayName("test Wine find by price range")
+	public void test3() {
+		List<Wine> wines = repo.findByPriceBetween(10.00, 20.00);
+		assertNotNull(wines);
+		assertTrue(wines.size() > 0);
+	}
+
+	@Test
+	@DisplayName("test find Wine by winery name")
+	public void test4() {
+		List<Wine> wines = repo.findByWinery_NameLike("%Holy%");
+		assertNotNull(wines);
+		assertTrue(wines.size() > 0);
+	}
+
+	@Test
+	@DisplayName("test find Wine by type")
+	public void test5() {
+		List<Wine> wines = repo.findByTypeLike("%cabernet%");
+		assertNotNull(wines);
+		assertTrue(wines.size() > 0);
+	}
+	
+	
 
 }
