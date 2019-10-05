@@ -46,6 +46,9 @@ public class WineServiceImpl implements WineService {
 	@Override
 	public Wine updateWine(Integer id, Wine wine) {
 		wine.setId(id);
+		Wine w = repo.findById(id).get();
+			wine.setWinery(w.getWinery());
+		
 		return repo.saveAndFlush(wine);
 	}
 
@@ -61,8 +64,7 @@ public class WineServiceImpl implements WineService {
 
 	@Override
 	public List<Wine> findByPriceBetween(double low, double high) {
-		repo.findByPriceBetween(low, high);
-		return null;
+		return repo.findByPriceBetween(low, high);
 	}
 
 	@Override
