@@ -13,17 +13,15 @@ can see a list of all wines, sort them by rating, find a specific wine by Id num
 
 ### Technologies Used
 
- Java / JPARepository
- Javascript
- JUnit
- MySQL
- MySQL Workbench
- Spring Boot
- Spring Rest
- Gradle
- Github
- Terminal
- AWS
+-   Java / JPARepository
+-   Javascript
+-   JUnit
+-   MySQL / MySQL Workbench
+-   Spring Boot / Spring Rest
+-   Gradle
+-   Git / Github
+-   Terminal
+-   AWS / EC2
 
 ### Access
 
