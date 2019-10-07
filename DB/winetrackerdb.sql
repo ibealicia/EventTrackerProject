@@ -72,6 +72,7 @@ START TRANSACTION;
 USE `winetrackerdb`;
 INSERT INTO `winery` (`id`, `name`, `city`, `link`) VALUES (1, 'The Winery at Holy Cross Abbey', 'Cañon City', 'https://abbeywinery.com/');
 INSERT INTO `winery` (`id`, `name`, `city`, `link`) VALUES (2, 'Aspen Peak Cellars', 'Bailey', 'https://www.aspenpeakcellars.com/');
+INSERT INTO `winery` (`id`, `name`, `city`, `link`) VALUES (3, 'Steamboat Winery', 'Steamboat Springs', 'https://steamboatwinery.com/');
 
 COMMIT;
 
@@ -85,6 +86,9 @@ INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `t
 INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (2, 'Pomegranate Rouge', 2018, 'Zinfandel', 'red', 3, '16.00', 'This light red wine is made from Zinfandel with natural pomegranate flavors and is very refreshing, balanced with sweet and tang.', 2);
 INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (3, 'Cabernet Sauvignon', 2017, 'Cabernet Sauvignon', 'red', 5, '32.00', 'Intensely smooth with big black cherry and smoky oak on the palette.', 1);
 INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (4, 'Monterey Chardonnay', 2017, 'Chardonnay', 'white', 3, '21.00', 'Loaded with beautiful, ripe fruit flavors of pear, green apple, citrus and hints of oak. ', 1);
+INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (5, 'Colorado Riesling', 2018, 'Riesling', 'white', 2, '17.00', 'Off-dry with aromas of pear and other wonderful aromatics. Well balanced between a touch of sweetness and refreshing acidity.', 2);
+INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (6, 'River Angler Cabernet', 2016, 'Cabernet', 'red', 5, '25.99', ' It is richly layered with flavors of spice: vanilla, allspice, and cinnamon, blended with hints of blackberry, boysenberry, violets, mocha and Creme de cassis.', 3);
+INSERT INTO `wine` (`id`, `name`, `year`, `type`, `color`, `rating`, `price`, `tasting_notes`, `winery_id`) VALUES (7, 'The Aspens Barbera', 2017, 'Barbera', 'red', 4, '24.99', 'This savory Barbera has a ruby red color.  It has hints of cherry, currrant and baking spice with supple tannins and fresh acidity.', 3);
 
 COMMIT;
 

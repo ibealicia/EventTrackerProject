@@ -151,10 +151,29 @@ function displayAllWines(wines) {
 		td9.appendChild(link);
 		table.appendChild(tr);
 	}
+	let sortList = document.createElement('form');
+	sortList.id = 'sortList';
+	sortList.name = 'sortList';
+	wineDiv.appendChild(sortList);
+	let button = document.createElement('input');
+	button.type = 'submit';
+	button.name = 'sortByRating';
+	button.value = 'Sort By Rating';
+	sortList.appendChild(button);
+	let sortedRating = wines.sort(function(a, b) {
+		return a.rating - b.rating;
+	});
 
-	
-	};
+	document.sortList.sortByRating.addEventListener('click', function(event) {
+		event.preventDefault();
+		var form = event.target.parentElement;
 
+		if (form !== null) {
+			displayAllWines(sortedRating);
+		}
+	})
+
+};
 
 function getWine(wineId) {
 	var xhr = new XMLHttpRequest();
