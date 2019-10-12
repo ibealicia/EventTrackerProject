@@ -1,0 +1,19 @@
+a {
+  color: #FFF;
+}
+a:hover {
+   color: gainsboro
+}
+
+#menu {
+  vertical-align: bottom;
+}
+
+.router-link {
+	color: white;
+	font-weight: bold;
+}
+
+#title {
+  color: white;
+}

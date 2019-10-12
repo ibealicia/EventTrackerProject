@@ -1,0 +1,37 @@
+
+
+.card {
+  outline-color: #722f37;
+  box-shadow: 2px 2px 4px 3px #5f4245;
+  -webkit-box-shadow: 2px 2px 4px 3px #5f4245;
+  -moz-box-shadow: 2px 2px 4px 3px #5f4245;
+  text-align: center;
+  color: #722f37;
+}
+
+h1 {
+  color: #722f37;
+}
+.wine-background {
+  background-color:rgba(179, 25, 43, 0.05);
+}
+.wine {
+  color:#722f37;
+}
+.btn {
+  outline-color: #722f37;
+  box-shadow: 1px 1px 0px 0px #722f37;
+  text-align: center;
+  background-color:#faf4f5;
+  color:#722f37;
+}
+.input-group-text {
+  color:#722f37;
+  background-color:#faf4f5;
+}
+
+.card-header {
+  color:#722f37;
+  background-color:#faf4f5;
+}
+

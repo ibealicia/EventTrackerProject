@@ -1,0 +1,8 @@
+.container-fluid {
+  background-color: #722f37;
+}
+.card {
+  box-shadow: 1px 1px 3px 2px #722f37;
+  -webkit-box-shadow: 1px 1px 3px 2px #722f37;
+  -moz-box-shadow: 1px 1px 3px 2px #722f37;
+}

@@ -1,0 +1,97 @@
+
+<div>
+  <div *ngIf="!selected">
+    <div id="createWine"  class='form-group col-sm-12'>
+        <form #addWineForm="ngForm" >
+          <div class='input-group mb-3'>
+            <div class='input-group'>
+                <div class="input-group-prepend">
+                    <span id="addForm" class="input-group-text">Add A Wine</span>
+                </div>
+            <input type="text" name="name" ngModel class='form-control'aria-label="name" placeholder="Name" aria-describedby="basic-addon2"/>
+            <input type="number" name="year" ngModel class='form-control'aria-label="year" placeholder="Vintage" aria-describedby="basic-addon2"/>
+            <input type="text" name="type" ngModel class='form-control'aria-label="type" placeholder="Type" aria-describedby="basic-addon2"/>
+            <input type="text" name="color" ngModel class='form-control'aria-label="color" placeholder="Color" aria-describedby="basic-addon2"/>
+            <input type="number" name="rating" ngModel class='form-control'aria-label="rating" placeholder="Rating" aria-describedby="basic-addon2"/>
+            <input type="number" name="price" ngModel class='form-control'aria-label="price" placeholder="Price" aria-describedby="basic-addon2"/>
+            </div>
+            <input type="text" name="tastingNotes" ngModel class='form-control'aria-label="tastingNotes" placeholder="Tasting Notes" aria-describedby="basic-addon2"/>
+            <input type="text" name="wineryName" ngModel class='form-control'aria-label="wineryName" placeholder="Winery Name" aria-describedby="basic-addon2"/>
+              <div class='input-group-append'>
+                <button (click)="addWine(addWineForm)" class=' input-group-text btn btn-outline-light '>Submit</button>
+              </div>
+          </div>
+        </form>
+      </div>
+  </div>
+
+   <div class="col-sm-12">
+    <div id='listWines' class="row"  *ngIf="!selected">
+         <div class="col-sm-4 mb-4  " *ngFor="let wine of wines">
+           <div class="card h-100 text-center">
+             <div class="card-body d-flex mt-auto flex-column">
+               <h3 class="card-title">{{wine.name}}</h3><br>
+               <h5 class="card-title">{{wine.winery.name}}</h5><br>
+               <p><span>Rating: {{wine.rating}} &nbsp; &nbsp; &nbsp; &nbsp; Price: {{wine.price | currency}} </span></p>
+               <div class="btn-group mt-auto" role="group" aria-label="Btn grp">
+                 <button (click)="displayWine(wine)" class="btn btn-outline wine-background wine mt-auto">Details</button><br>
+               </div>
+             </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  <div>
+      <div id="WineDetail" class="row" *ngIf="selected && !editWine || urlWineId">
+        <div class="col-sm-12" >
+            <button id="backbtn" (click)="displayTable()" class='col-sm-12 input-group-text btn btn-outline'>Back To Wine List</button><br>
+          <div class="card text-center">
+              <div class="card-header">
+                  <h3 class="card-title">{{selected.name | uppercase}}</h3>
+                  <h5 class="card-title">-&nbsp;{{selected.color| uppercase}}&nbsp;-</h5>
+              </div>
+              <div class="card-body d-flex mt-auto flex-column">
+                <p class="card-text">{{selected.tastingNotes}}</p><br>
+                <p class="card-title">VINTAGE: {{selected.year}}&nbsp; &nbsp;TYPE: {{selected.type | uppercase}}</p>
+                <p><span>RATING: {{selected.rating }}&nbsp; &nbsp;PRICE: {{selected.price | currency}} </span></p>
+                <h5 class="card-title">{{selected.winery.name}}</h5>
+                <h6 class="card-text">{{selected.winery.city}}, CO</h6>
+                <p><a [href]="selected.winery.link">{{selected.winery.link}}</a></p>
+
+                  <div id="updateWine" *ngIf="selected" class='form-group col-sm-12'>
+                      <form #editWineForm="ngForm" >
+                      <div class='input-group mb-1'>
+                          <div class='input-group'>
+                              <div class='input-group'>
+                                <div class="input-group-prepend">
+                                    <span id="addForm" class="input-group-text">Update This Wine</span>
+                                </div>
+                                <input type="text" name="name" [(ngModel)]="selected.name" class='form-control'aria-label="name" placeholder="Name" aria-describedby="basic-addon2"/>
+                                <input type="number" name="year" [(ngModel)]="selected.year" class='form-control'aria-label="year" placeholder="Vintage" aria-describedby="basic-addon2"/>
+                                <input type="text" name="type" [(ngModel)]="selected.type" class='form-control'aria-label="type" placeholder="Type" aria-describedby="basic-addon2"/>
+                                <input type="text" name="color" [(ngModel)]="selected.color" class='form-control'aria-label="color" placeholder="Color" aria-describedby="basic-addon2"/>
+                                <input type="number" name="rating" [(ngModel)]="selected.rating" class='form-control'aria-label="rating" placeholder="Rating" aria-describedby="basic-addon2"/>
+                                <input type="number" name="price" [(ngModel)]="selected.price" class='form-control'aria-label="price" placeholder="Price" aria-describedby="basic-addon2"/>
+                              </div>
+                        <input type="text" name="tastingNotes" [(ngModel)]="selected.tastingNotes" class='form-control'aria-label="tastingNotes" placeholder="Tasting Notes" aria-describedby="basic-addon2"/>
+                          <div class='input-group-append'>
+                            <button (click)="updateWine(selected)" class='input-group-text btn btn-outline-dark'>Submit Changes</button>
+                          </div>
+                        </div>
+                    </div>
+                    </form>
+                  </div>
+
+                <div class="btn-group mt-auto col-sm-12" role="group" aria-label="Btn grp">
+                  <button (click)="deleteWine(selected.id)" class='btn btn-outline wine-background wine mt-auto'>Delete This Wine</button>
+                </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+      </div>
+  </div>
+  </div>
+</div>

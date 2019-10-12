@@ -1,0 +1,13 @@
+<div class="navbar" *ngIf="!selected">
+  <span id="title" style="float:left;">
+      <h1>CO WINE TRACKER</h1>
+  </span>
+  <span id="menu" style="float:right;">
+    <h4>
+      <a [routerLink]="['/home']"> Home &nbsp;|&nbsp;</a>
+      <a [routerLink]="['/wines']"> Wines &nbsp;|&nbsp;</a>
+      <a [routerLink]="['/wineries']"> Wineries &nbsp;|&nbsp;</a>
+    </h4>
+  </span>
+</div>
+
