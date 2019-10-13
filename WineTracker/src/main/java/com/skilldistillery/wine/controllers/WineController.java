@@ -97,5 +97,10 @@ public class WineController {
 	public List<Wine> findByType(@PathVariable("type") String type) {
 		return ws.findByTypeLike("cabernet");
 	}
+	
+	@GetMapping("wines/price/{low}/{high}")
+	public List<Wine> findWinesByPrice(@PathVariable("low") Double low,@PathVariable("high") Double high) {
+		return ws.findByPriceBetween(low, high);
+	}
 
 }

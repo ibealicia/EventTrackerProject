@@ -17,6 +17,8 @@ export class WineComponent implements OnInit {
   newWine: Wine = new Wine();
   editWine = null;
   urlWineId: string;
+  urlLow: string;
+  urlHigh: string;
 
   constructor(private wineServ: WineService,
               private currentRoute: ActivatedRoute) { }
@@ -26,20 +28,25 @@ export class WineComponent implements OnInit {
       this.currentRoute.paramMap.subscribe(params => {
         this.urlWineId = this.currentRoute.snapshot.paramMap.get('id');
       });
-      console.log(this.urlWineId);
-      // this.reload();
     }
+    if (this.currentRoute.snapshot.paramMap.get('low') && this.currentRoute.snapshot.paramMap.get('high')) {
+      this.currentRoute.paramMap.subscribe(params => {
+        this.urlLow = this.currentRoute.snapshot.paramMap.get('low');
+        this.urlHigh = this.currentRoute.snapshot.paramMap.get('high');
+      });
+    }
+    this.getNumberOfWines();
     this.reload();
   }
 
   displayWine(wine: Wine) {
     this.selected = wine;
     this.wineServ.show(wine.id.toString()).subscribe(
-      data => {
-        this.selected = data;
+      success => {
+        this.selected = success;
         this.reload();
       },
-      err => console.error('Error in WineComponent.displayWine: ' + err)
+      failure => console.error('Error in WineComponent.displayWine: ' + failure)
     );
     }
 
@@ -47,19 +54,56 @@ export class WineComponent implements OnInit {
     this.selected = null;
   }
 
+  getNumberOfWines(): number {
+    return this.wines.length;
+  }
+
+  getWineByPrice(form: NgForm) {
+    const low = form.value.low;
+    const high = form.value.high;
+    this.wineServ.getByPrice(low, high).subscribe(
+      success => {
+        this.wines = success;
+        this.getNumberOfWines();
+        this.reload();
+        if (this.urlLow && this.urlHigh) {
+          this.wineServ.getByPrice(this.urlLow, this.urlHigh).subscribe(
+            data => {
+              this.wines = data;
+              this.urlWineId = '';
+              this.getNumberOfWines();
+            },
+            err => {
+              console.error('Error in WineComponent.getWineByPrice');
+              console.error(err);
+            },
+            () => {
+              this.urlWineId = '';
+            }
+          );
+        }
+      },
+      failure => {
+        console.error('Error in WineComponent.getWineByPrice: ' + failure);
+      },
+    );
+  }
+
   reload() {
     this.wineServ.index().subscribe(
       success => {
         this.wines = success;
+        this.getNumberOfWines();
         if (this.urlWineId) {
           this.wineServ.show(this.urlWineId).subscribe(
             data => {
               this.selected = this.wines[parseInt(this.urlWineId, 10) - 1];
               this.selected = data;
               this.urlWineId = '';
+              this.getNumberOfWines();
             },
             err => {
-              console.error('Error geting Todo by Id');
+              console.error('Error geting Wine by Id');
               console.error(err);
             },
             () => {

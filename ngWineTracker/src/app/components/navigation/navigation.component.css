@@ -17,3 +17,8 @@ a:hover {
 #title {
   color: white;
 }
+
+.badge {
+  color:#722f37;
+  background-color:#faf4f5;
+}

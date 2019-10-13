@@ -9,8 +9,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: 'home', component: HomeComponent },
   { path: 'navigation', component: NavigationComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'wines/price/:low/:high', component: WineComponent },
   { path: 'wines/:id', component: WineComponent },
   { path: 'wines', component: WineComponent },
   { path: 'wineries/:id', component: WineryComponent },

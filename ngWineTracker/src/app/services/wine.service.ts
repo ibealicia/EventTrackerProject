@@ -26,6 +26,10 @@ export class WineService {
       );
   }
 
+  index2() {
+  return [...this.wines];
+  }
+
   show(id: string) {
     console.log(id);
     return this.http.get<Wine>(this.url + '/' + id)
@@ -33,6 +37,16 @@ export class WineService {
       catchError((err: any) => {
         console.log(err);
         return throwError('Error in WineService.index()');
+      })
+    );
+  }
+
+  getByPrice(low: string, high: string) {
+    return this.http.get<Wine[]>(this.url + '/price/' + low + '/' + high)
+    .pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('Error in WineService.getByPrice()');
       })
     );
   }

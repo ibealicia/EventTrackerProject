@@ -1,5 +1,31 @@
 
 <div>
+
+    <div class="col-sm-12">
+        <div id='listWines' class="row" *ngIf="!selected">
+            <div class="col-sm-12">
+               <div class="card text-center">
+                 <div class="card-body">
+                   <h4 class="card-title">YOU HAVE&nbsp;{{ getNumberOfWines() }}&nbsp;WINES IN YOUR LIST</h4>
+                   <!-- <form #findWineForm="ngForm" >
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="">Find Wines By Price</span>
+                        </div>
+                        <input type="number" name="low" ngModel class="form-control" placeholder="low">
+                        <input type="number" name="high" ngModel class="form-control" placeholder="high">
+                        <div class='input-group-append'>
+                            <button (click)="getWineByPrice(findWineForm)" class=' input-group-text btn btn-outline-light '>Submit</button>
+                          </div>
+                      </div>
+                    </form> -->
+                  </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+
   <div *ngIf="!selected">
     <div id="createWine"  class='form-group col-sm-12'>
         <form #addWineForm="ngForm" >
@@ -11,8 +37,22 @@
             <input type="text" name="name" ngModel class='form-control'aria-label="name" placeholder="Name" aria-describedby="basic-addon2"/>
             <input type="number" name="year" ngModel class='form-control'aria-label="year" placeholder="Vintage" aria-describedby="basic-addon2"/>
             <input type="text" name="type" ngModel class='form-control'aria-label="type" placeholder="Type" aria-describedby="basic-addon2"/>
-            <input type="text" name="color" ngModel class='form-control'aria-label="color" placeholder="Color" aria-describedby="basic-addon2"/>
-            <input type="number" name="rating" ngModel class='form-control'aria-label="rating" placeholder="Rating" aria-describedby="basic-addon2"/>
+            <!-- <input type="text" name="color" ngModel class='form-control'aria-label="color" placeholder="Color" aria-describedby="basic-addon2"/> -->
+            <select class="custom-select"  name="color" ngModel>
+                <option selected>Color...</option>
+                <option value="red">Red</option>
+                <option value="white">White</option>
+                <option value="rose">Rosé</option>
+                </select>
+            <!-- <input type="number" name="rating" ngModel class='form-control'aria-label="rating" placeholder="Rating" aria-describedby="basic-addon2"/> -->
+            <select class="custom-select"  name="rating" ngModel>
+                <option selected>Rating...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                </select>
             <input type="number" name="price" ngModel class='form-control'aria-label="price" placeholder="Price" aria-describedby="basic-addon2"/>
             </div>
             <input type="text" name="tastingNotes" ngModel class='form-control'aria-label="tastingNotes" placeholder="Tasting Notes" aria-describedby="basic-addon2"/>
